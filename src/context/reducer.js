@@ -4,6 +4,10 @@ export const coinReducer = (state, {type, payload})=>{
         case "LOADING":{
             return {...state, loading: true}
         }
+        case "FETCH_COINS":{
+            return {...state, allCoins: payload, loading: false}
+        }
+
 
 
 
