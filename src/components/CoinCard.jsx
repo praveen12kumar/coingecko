@@ -13,7 +13,7 @@ function CoinCard ({coin}) {
 
 
   return (
-    <div className={`${listView ? "w-full" : "w-[20vw]" } ${listView ? "h-[8vw]" : "h-[20vw]"} bg-[#f3f3f3] rounded-xl p-8 flex gap-4 ${listView ? "flex-row" : "flex-col"} ${listView ? "items-center" : "items-start"} `}>
+    <div className={`${listView ? "w-full" : "w-[20vw]" } ${listView ? "h-[8vw]" : "h-[20vw]"} bg-[#f3f3f3] rounded-xl p-8 flex gap-4 ${listView ? "flex-row" : "flex-col"} ${listView ? "items-center" : "items-start"} cursor-pointer `}>
         <div className={`w-full flex items-center ${listView ? "gap-12" : "gap-4"} `}>
             <img className='w-14 h-14' src={coin?.image} alt="coin" />
             <div className="flex flex-col items-start ">
@@ -27,7 +27,7 @@ function CoinCard ({coin}) {
         </div>
 
         <div className="w-full">
-            <h1 className={`text-xl text-green-600 ${listView ? "text-center" : ""}  font-poppins font-semibold`}>{currencyType}{" "}{coin?.current_price?.toFixed(2)}</h1>
+            <h1 className={`text-xl text-green-600 ${listView ? "text-center" : ""}  font-poppins font-semibold`}>{currencyType}{coin?.current_price?.toFixed(2)}</h1>
         </div>
 
         <div className="w-full flex flex-col items-start gap-2 ">

@@ -3,7 +3,7 @@ import CoinCard from './CoinCard';
 
 function List  ({allCoins, grid}) {
   return (
-    <div className='w-screen min-h-full bg-red-100 px-20 py-5 flex flex-col gap-5'>
+    <div className='w-screen min-h-full px-20 py-5 flex flex-col gap-5'>
         {
             allCoins?.map((coin)=>{
                 return(
