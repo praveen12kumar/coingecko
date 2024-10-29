@@ -11,8 +11,8 @@ const CoinProvider = ({ children }) => {
     const initialState = {
         allCoins: [],
         Coin:{},
+        searchedResults: [],
         loading: false,
-
     }
 
     const [state, dispatch] = useReducer(coinReducer, initialState);
@@ -27,11 +27,27 @@ const CoinProvider = ({ children }) => {
         try {
             const response = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1");
             const data = response.data;
+            console.log("fetchdata", data);
             dispatch({ type: "FETCH_COINS", payload: data });
         } catch (error) {
             console.log(error);
         }
     }
+
+    const fetchSearchResults = async (searchTerm) => {
+        try {
+          const response = await fetch(`https://api.coingecko.com/api/v3/search?query=${searchTerm}`);
+          const data = await response.json();
+        
+          const exactMatch = data.coins.filter(
+            (coin) => coin.name.toLowerCase().includes(searchTerm.toLowerCase()) || coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
+          ).splice(0, 10);
+
+          dispatch({type:"SEARCH_RESULT", payload: exactMatch});
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
 
 
     useEffect(()=>{
@@ -43,7 +59,9 @@ const CoinProvider = ({ children }) => {
             ...state,
             dispatch,
             listView,
-            toggle
+            toggle,
+            fetchSearchResults,
+
 
         }}>
             {children}

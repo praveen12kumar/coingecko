@@ -22,7 +22,7 @@ function CoinCard ({coin}) {
             </div>
         </div>
         <div className={`w-full flex items-center ${listView ? "justify-center" : "justify-start"} gap-8 py-4 `}>
-            <p className={`px-6 py-1 text-lg font-nunito font-semibold rounded-full border-2 ${coin?.market_cap_change_percentage_24h < 0 ? "border-red-600 text-red-500" : "border-green-600 text-green-600"}`}>{coin?.market_cap_change_percentage_24h > 0 ? "+" : "-"} {coin?.market_cap_change_percentage_24h.toFixed(2)}% </p>
+            <p className={`px-6 py-1 text-lg font-nunito font-semibold rounded-full border-2 ${coin?.market_cap_change_percentage_24h < 0 ? "border-red-600 text-red-500" : "border-green-600 text-green-600"}`}>{coin?.market_cap_change_percentage_24h > 0 ? "+" : "-"} {coin?.market_cap_change_percentage_24h?.toFixed(2)}% </p>
             <p className={`px-6 py-2 rounded-full text-lg font-semibold border-2 ${coin?.market_cap_change_percentage_24h < 0 ? "border-red-600 text-red-500" : "border-green-600 text-green-600"} `}>{coin?.market_cap_change_percentage_24h > 0 ? <IoMdTrendingUp /> : <IoMdTrendingDown />}</p>
         </div>
 
