@@ -1,7 +1,7 @@
 import Button from "../components/Button"
 import Heading from "../components/Heading"
 import iphone from "../assets/iphone.png";
-import "./home.css";
+
 
 function Home  () {
   return (

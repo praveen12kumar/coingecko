@@ -10,6 +10,9 @@ export const coinReducer = (state, {type, payload})=>{
         case "SEARCH_RESULT":{
             return {...state, searchedResults: payload, loading: false}
         }
+        case "GET_COIN":{
+            return {...state, coin: payload, loading: false}
+        }
 
 
 

@@ -20,7 +20,7 @@ const Search = ({search, setSearch}) => {
 
         return ()=> clearTimeout(delayDebounceFn);
 
-    },[search])
+    },[search]);
     
   return (
     <div className="w-full mt-10">

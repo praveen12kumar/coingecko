@@ -10,7 +10,7 @@ const CoinProvider = ({ children }) => {
 
     const initialState = {
         allCoins: [],
-        Coin:{},
+        coin:{},
         searchedResults: [],
         loading: false,
     }
@@ -49,6 +49,16 @@ const CoinProvider = ({ children }) => {
         }
       };
 
+      const getCoin = async (id) => {
+        try {
+          const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`);
+          const data = response.data;
+          dispatch({ type: "GET_COIN", payload: data });
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
 
     useEffect(()=>{
         fetchAllCoins();
@@ -61,6 +71,7 @@ const CoinProvider = ({ children }) => {
             listView,
             toggle,
             fetchSearchResults,
+            getCoin,
 
 
         }}>
