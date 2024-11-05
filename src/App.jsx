@@ -3,7 +3,6 @@ import Home from "./pages/Home";
 import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import CoinDetail from "./pages/CoinDetail";
-import Watchlist from "./pages/Watchlist";
 import './App.css'
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/watchlist" element={<Watchlist />} /> 
         <Route path="/coin/:id" element={<CoinDetail />} />
       </Routes>
     </>

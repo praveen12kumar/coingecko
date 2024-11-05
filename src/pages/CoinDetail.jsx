@@ -5,9 +5,9 @@ import CoinContext from '../context/coinContext';
 import CoinDetailCard from '../components/CoinDetailCard';
 import LineChart from '../components/LineChart';
 import Dropdown from '../components/Dropdown';
-import { gettingDate } from '../utils';
 import Button from '../components/Button';
 import Loader from '../components/Loader';
+import CoinDescript from '../components/CoinDescript';
 function CoinDetail () {
     const {id} = useParams();
     const [charData, setCharData] = useState({labels:[], datasets:[{}]})
@@ -18,6 +18,9 @@ function CoinDetail () {
     useEffect(()=>{
         getCoin(id)
     },[id])
+
+    console.log(coin);
+    
 
     const onClickHandler = (e)=>{
       setPriceType(e.target.value)
@@ -46,6 +49,9 @@ function CoinDetail () {
             </div>
             <div className="w-[90%] mx-auto border border-slate-100 p-8 bg-slate-100 rounded-2xl">
                 <LineChart chartData={charData} priceType={priceType} />
+            </div>
+            <div className="w-[90%] mx-auto bg-slate-100 p-4 rounded-2xl text-md font-nunito">
+              <CoinDescript text={coin.name} description = {coin?.description?.en} />
             </div>
     </div>
         )
