@@ -1,6 +1,7 @@
 import React from 'react';
 import CoinCard from './CoinCard';
 
+
 function Grid({ allCoins}) {
   return (
     <div className={`w-full mt-5 flex flex-wrap items-center justify-center gap-6  `}>

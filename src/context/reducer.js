@@ -13,10 +13,9 @@ export const coinReducer = (state, {type, payload})=>{
         case "GET_COIN":{
             return {...state, coin: payload, loading: false}
         }
-
-
-
-
+        case "GET_GRAPH_DATA":{
+            return {...state, graphData: payload, loading: false}
+        }
         case "default":{
             return state;
         }
