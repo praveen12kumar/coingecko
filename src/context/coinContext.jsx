@@ -20,18 +20,22 @@ const CoinProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(coinReducer, initialState);
     const [listView, setListView] = useState(true);
+    const itemsPerPage = 10;
+    const [totalPages, setTotalPages] = useState(1
     
+    );
 
     const toggle = () => {
         setListView((prev) => !prev);
     }
 
-    const fetchAllCoins = async () => {
+    const fetchAllCoins = async (page) => {
         try {
             dispatch({ type: "LOADING" });
-            const response = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1");
+            const response = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${itemsPerPage}&page=${page}`);
             const data = response.data;
             dispatch({ type: "FETCH_COINS", payload: data });
+            setTotalPages(Math.ceil(100 / itemsPerPage));
         } catch (error) {
             console.log(error);
         }
@@ -102,22 +106,17 @@ const CoinProvider = ({ children }) => {
         }
       };
       
-      
-
-
-    useEffect(()=>{
-        fetchAllCoins();
-    },[]);
-
     return (
         <CoinContext.Provider value={{
             ...state,
             dispatch,
             listView,
             toggle,
+            fetchAllCoins,
             fetchSearchResults,
             getCoin,
             getGraphData,
+            totalPages,
 
         }}>
             {children}

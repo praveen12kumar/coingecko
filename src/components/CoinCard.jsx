@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { IoMdTrendingDown, IoMdTrendingUp } from "react-icons/io";
+
+import { IoMdTrendingDown, IoMdTrendingUp, } from "react-icons/io";
 import CoinContext from '../context/coinContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,14 +9,19 @@ function CoinCard ({ coin }) {
     const [currencyType] = useState("$");
     const { listView } = useContext(CoinContext);
 
+    
     const isPositiveChange = coin?.market_cap_change_percentage_24h >= 0;
     const changeColorClass = isPositiveChange ? "text-green-600 border-green-600" : "text-red-500 border-red-600";
     const hoverClass = isPositiveChange ? "hover:bg-green-600 hover:border-green-600" : "hover:bg-red-600 hover:border-red-600";
 
+
+    
+
+
     return (
         <div 
             onClick={() => navigate(`/coin/${coin?.id}`)}
-            className={`${listView ? "w-full h-[8vw] flex-row items-center" : "w-[20vw] h-[20vw] flex-col items-start"} bg-[#f3f3f3] rounded-xl p-8 flex gap-4 cursor-pointer`}
+            className={`${listView ? "w-full h-[8vw] flex-row items-center" : "w-[20vw] h-[20vw] flex-col items-start"} bg-[#f3f3f3] rounded-xl p-8 flex gap-4 cursor-pointer relative`}
         >
             <div className={`w-full flex items-center ${listView ? "gap-12" : "gap-4"}`}>
                 <img className='w-14 h-14' src={coin?.image} alt="coin" />
@@ -23,6 +29,7 @@ function CoinCard ({ coin }) {
                     <h1 className='text-lg uppercase font-poppins font-semibold'>{coin?.symbol}-USD</h1>
                     <h3 className='text-md font-poppins font-semibold uppercase'>{coin?.name}</h3>
                 </div>
+                
             </div>
 
             <div className={`w-full flex items-center ${listView ? "justify-center" : "justify-start"} gap-8 py-4`}>
